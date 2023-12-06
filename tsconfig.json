@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "useDefineForClassFields": true,
+      "module": "esnext",
+      "moduleResolution": "node",
+      "strict": true,
+      "jsx": "preserve",
+      "sourceMap": true,
+      "declaration": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "lib": ["esnext", "dom"],
+      "baseUrl": ".",
+      "paths": {
+        "/@/*": ["src/*"],
+        "/$/*": ["jcadmin/*"],
+        "/BASEDIR/*": ["*"]
+      }
+    },
+    // "files": ["./ts/linkedlist.ts"]
+    "include": ["./**/*.d.ts", "./**/*.ts", "./**/*.tsx"]
+  }
