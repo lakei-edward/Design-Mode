@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="open">打开</button>
+    <button id="close">关闭</button>
+    <script>
+      const Modal = (function () {
+        let instance;
+        return function () {
+          if (!instance) {
+            instance = document.createElement("div");
+            instance.innerHTML = "对话框";
+            instance.className = "box";
+            instance.style.display = "none";
+            document.body.appendChild(instance);
+          }
+          return instance;
+        };
+      })();
+      document.getElementById("open").onclick = function () {
+        const modal = Modal();
+        modal.style.display = "block";
+      };
+      document.getElementById("close").onclick = function () {
+        const modal = Modal();
+        modal.style.display = "none";
+      };
+    </script>
+  </body>
+</html>
