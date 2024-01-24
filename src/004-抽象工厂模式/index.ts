@@ -19,7 +19,11 @@ class User {
   }
 }
 
-class SuperAdmin extends User {
+interface supermin {
+  addRouters(path: string): void;
+}
+
+class SuperAdmin extends User implements supermin {
   constructor(name: string) {
     super(name, "super", [1, 2, 3, 4, 5]);
   }
@@ -36,10 +40,7 @@ class CommonAdmin extends User {
   }
 }
 
-function getAbstractUserFactory(
-  role: string,
-  name: string
-): SuperAdmin | CommonAdmin {
+function getAbstractUserFactory(role: string, name: string): any {
   switch (role) {
     case "super":
       return new SuperAdmin(name);
@@ -52,11 +53,12 @@ function getAbstractUserFactory(
 
 let UserClass = getAbstractUserFactory("super", "lakei");
 UserClass.welcom();
-console.log(UserClass.addRouters("lakei"));
+UserClass.addRouters("path");
+console.log(UserClass);
 
+console.log("");
 // 用户二
-// let UserClass2 = getAbstractUserFactory("common");
-// let myUser2 = new UserClass2("edward");
-// myUser2.welcom();
-// myUser2.editRouters(1, "home");
-// console.log(myUser2);
+let UserClass2 = getAbstractUserFactory("common", "tom");
+UserClass2.welcom();
+UserClass2.editRouters(1, "home");
+console.log(UserClass2);
